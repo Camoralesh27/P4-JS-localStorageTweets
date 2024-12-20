@@ -11,8 +11,14 @@ let tweets = [];
 eventListeners();
 
 function eventListeners() {
-    // Cuando se envía el formulario
+    // Cuando el usuario agrega un nuevo tweet
     formulario.addEventListener('submit', agregarTweet);
+
+    //Cuando el documento esta listo
+    document.addEventListener('DOMContentLoaded', () => {
+        tweets = JSON.parse(localStorage.getItem('tweets')) || []; //Almacenar los tweets en el localStorage
+        crearHTML();
+    });
 
 
     //! Agregado por mi - Prevenir salto de línea con Enter en el textarea
@@ -23,9 +29,6 @@ function eventListeners() {
         }
     });
 }
-
-
-
 
 
 //* FUNCIONES
@@ -90,7 +93,14 @@ function crearHTML() {
             listaTweets.appendChild(li);
         });
     }
+
+    sincronizarStorage();
 } 
+
+// Agregar los tweets a LocalStorage
+function sincronizarStorage() {
+    localStorage.setItem('tweets', JSON.stringify(tweets));
+}
 
 //Limpiar HTML
 function limpiarHTML() {
