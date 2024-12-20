@@ -1,6 +1,7 @@
 //* VARIABLES
 const formulario = document.querySelector('#formulario');
 const listaTweets = document.querySelector('#lista-tweets');
+const tweetInput = document.querySelector('#tweet'); //! agregado por mi - Capturar el textarea 
 
 let tweets = [];
 
@@ -10,7 +11,17 @@ let tweets = [];
 eventListeners();
 
 function eventListeners() {
+    // Cuando se envía el formulario
     formulario.addEventListener('submit', agregarTweet);
+
+
+    //! Agregado por mi - Prevenir salto de línea con Enter en el textarea
+    tweetInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault(); // Evita el salto de línea
+            formulario.dispatchEvent(new Event('submit')); // Simula el envío del formulario
+        }
+    });
 }
 
 
