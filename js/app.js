@@ -56,6 +56,9 @@ function agregarTweet(e) {
     // Crear HTML
     crearHTML();
 
+    //Mostrar feedback visual
+    mostrarConfirmacion();
+
     //Reiniciar el formulario
     formulario.reset();
 }
@@ -127,4 +130,23 @@ function limpiarHTML() {
     while (listaTweets.firstChild) {
         listaTweets.removeChild(listaTweets.firstChild);
     }
+}
+
+//Muestra un mensaje de confirmacion
+function mostrarConfirmacion() {
+    // Crear el círculo verde con el icono
+    const confirmacion = document.createElement('div');
+    confirmacion.classList.add('confirmacion');
+
+    // Añadir icono de pulgar hacia arriba
+    confirmacion.innerHTML = '👍';
+
+    // Insertar en el DOM
+    const contenido = document.querySelector('#contenido');
+    contenido.appendChild(confirmacion);
+
+    // Eliminarlo después de 2 segundos
+    setTimeout(() => {
+        confirmacion.remove();
+    }, 3000);
 }
