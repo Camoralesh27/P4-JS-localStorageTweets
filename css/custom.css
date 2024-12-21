@@ -1,3 +1,8 @@
+:root {
+    --red : #dc2626;
+    --gray : #d6d6d6;
+}
+
 h1, h2 {
     text-align: center;
 }
@@ -9,12 +14,18 @@ h1, h2 {
 .borrar-tweet:hover {
     float: right;
     cursor: pointer;
-    color: red;
+    background-color: var(--red);
+    color: white;
+    border-radius: .50rem;
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    line-height: 2rem;
     font-weight: bold;
 }
 
 .error {
-    background-color: red;
+    background-color: var(--red);
     text-align: center;
     padding: 10px;
     text-transform: uppercase;
@@ -22,4 +33,16 @@ h1, h2 {
     max-width: 400px;
     margin: 0 auto;
     color: white;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid var(--gray);
+    margin-bottom: 10px;
+    border-radius: 1rem;
+    background-color: var(--gray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
 }
